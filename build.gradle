@@ -44,3 +44,11 @@ spotless {
     eclipse('4.13.0').configFile('.settings/org.eclipse.jdt.core.prefs')
   }
 }
+
+task writeFile {
+    doLast {
+        File fileTxt = file('build/folder/file.txt')
+        fileTxt.getParentFile().mkdirs()
+        fileTxt.write "Test " + System.currentTimeMillis() + "\n"
+    }
+}
