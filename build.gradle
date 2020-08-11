@@ -78,3 +78,12 @@ gitPublish {
 
     commitMessage = "Update the 'tmp' branch."
 }
+
+model {
+    tasks.build {
+        dependsOn project.tasks.gitPublishPush
+    }
+    tasks.gitPublishReset {
+        dependsOn project.tasks.writeFile
+    }
+}
